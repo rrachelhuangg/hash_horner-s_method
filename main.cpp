@@ -36,6 +36,7 @@ int main(){
         hash_table.insert(addresses[i]);
     }
     hash_table.print();
+    cout<<"Hash table load factor: " << to_string(hash_table.getLoadFactor())<<endl;
 
     MailingAddress addr_one("450 Highland Ave","Salem","MA",1970);
     bool check_one = hash_table.contains(addr_one);

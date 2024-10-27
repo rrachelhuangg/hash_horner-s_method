@@ -27,8 +27,8 @@ class MailingAddress{
             }
             return false;
         }
-        string toString(){ /*make sure spaces and all of this formatting is correct*/
-            return "{" + street + ", " + city + ", " + state + "," + std::to_string(zipcode) + "}";
+        string toString(){
+            return "{" + street + ", " + city + ", " + state + ", " + std::to_string(zipcode) + "}";
         }
 };
 

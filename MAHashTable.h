@@ -9,10 +9,9 @@ class MAHashTable{
     public:
         static int M;
         static int R;
+        int n_elements;
         vector<vector<MailingAddress> > table;
         MAHashTable(){
-            this->M=97; //are M and R here necessary?
-            this->R=31;
             for(int i = 0; i < M; i++){
                 vector<MailingAddress> slot;
                 table.push_back(slot);
@@ -24,8 +23,8 @@ class MAHashTable{
         }
         static long hashString(string s){
             long string_hash;
-            for(int i = 1; i < s.length(); i++){ /*confirm about if the bounds of the summation of the hash function are exclusive or not??*/
-                string_hash = (R * string_hash + int(s.at(i))) % M;
+            for(int i = 1; i < s.length(); i++){
+                string_hash = (R * string_hash + int(s[i])) % M;
             }
             return string_hash;
         }
@@ -39,6 +38,7 @@ class MAHashTable{
         void insert(MailingAddress addr){
             /*hashAddress(addr) should return a table index value from 0 to M-1*/
             table[hashAddress(addr)].push_back(addr);
+            n_elements += 1;
         }
         bool contains(MailingAddress addr){
             vector<MailingAddress> slot = table[hashAddress(addr)];
@@ -51,8 +51,7 @@ class MAHashTable{
             return check;
         }
         float getLoadFactor(){
-            /* calculate N/M in constant time??*/
-            return 0;
+            return float(n_elements)/float(M);
         }
         void print(){
             for(int i = 0; i < M; i++){
