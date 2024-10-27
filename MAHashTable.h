@@ -22,8 +22,8 @@ class MAHashTable{
             return hashed_int;
         }
         static long hashString(string s){
-            long string_hash;
-            for(int i = 1; i < s.length(); i++){
+            long string_hash = 0;
+            for(int i = 0; i < s.length(); i++){
                 string_hash = (R * string_hash + int(s[i])) % M;
             }
             return string_hash;
@@ -65,7 +65,7 @@ class MAHashTable{
                     output = to_string(i) + "->[" + elements + "]";
                 }
                 else{
-                    output = "[]";
+                    output = to_string(i) + "->[]";
                 }
                 cout<<output<<endl;
             }
